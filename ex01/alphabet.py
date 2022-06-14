@@ -16,13 +16,14 @@ def quiz():
     alphabet = [chr(ord("A")+i) for i in range(26)]
     t1 = random.sample(alphabet,k=num)
     t2 = random.sample(t1,len(t1)-minus)
+    t3 = 
     m1 = "対象文字:"
     m2 = "欠損文字"
     print(m1)
     print(t1)
     print(m2)
     print(t2)
-    return t1,t2,m1,m2
+    return 
 
 
 def kaitou(seikai):
