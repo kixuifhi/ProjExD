@@ -46,7 +46,7 @@ def kaitou(seikai):
         while count < ending:
             main()
             count +=1
-            if count > ending:
+            if count >= ending:
                 break
 
 if __name__ == "__main__":
