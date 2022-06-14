@@ -1,28 +1,27 @@
-from locale import ABDAY_1, ABDAY_3
-from re import A
 import random
+def main():
+    seikai = syutudai()
+    kaitou(seikai)
 
+def syutudai():
+    qas = [
+        {"q":"サザエの旦那の名前は?","a":["マスオ","ますお","益男"]},
+        {"q":"カツオの妹の名前は?","a":["わかめ","ワカメ"]},
+        {"q": "タラオはカツオから見てどんな関係?","a":["甥","おい"]},
+    ]
 
+    r = random.randint(0,2)
+    print(qas[r]["q"])
+    return qas[r]["a"]
 
-def shutudai():
-   a1 = "サザエの旦那の名前は?"
-   a2 = "カツオの妹の名前は?"
-   a3 =  "タラオはカツオから見てどんな関係?"
-   s = random.randint(0,2)
-   if s == 0:
-        print(a1)
-        
-   elif s == 1:
-        print(a2)
+def kaitou(seikai):
+    ans = input("答えるんだ:")
+    if ans in seikai:
+        print("正解")
 
-   else:
-        print(a3)
+    else:
+        print("不正解")
 
+if __name__ == "__main__":
+    main()
 
-
-
-def kaito():
-    ans1 
-    ans2
-    ans3 
-    writeans = input("答えを入力してください。")
