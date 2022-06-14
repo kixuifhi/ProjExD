@@ -22,6 +22,8 @@ def kaitou(seikai):
     else:
         print("不正解")
 
-if __name__ == "__main__":
+if __name__ == "__main__":   #11111
     main()
+
+
 
