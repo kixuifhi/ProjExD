@@ -1,11 +1,12 @@
 import tkinter as tk  #インポート
 import tkinter.messagebox as tkm
+import random
 
-from matplotlib import widgets
 
 
 
 def button_click(event):
+    
     btn = event.widget
     num = btn['text'] #クリックされたボタンの文字
     if num == '=':
@@ -13,6 +14,10 @@ def button_click(event):
        res = eval(eqn)
        entry.delete(0, tk.END)
        entry.insert(tk.END,res)
+
+    if num == "AC":
+       entry.delete(0, tk.END)
+
     else:
     #tkm.showinfo("",f'{num}のボタンがクリックされました')
        entry.insert(tk.END,num)
@@ -31,12 +36,14 @@ entry = tk.Entry(root, justify='right', width=10, font=("Times New Roman",40))
 entry.grid(row=0,column=0,columnspan=3)
 
 r,c=1,0 #r行 c列
-for i,num in enumerate([i for i in range(9,-1,-1)]+["+","="]):
+for i,num in enumerate([i for i in range(9,-1,-1)]+["+","-","*","/",".","=","AC"]):
    btn = tk.Button(root, 
                    text=f'{num}',
-                   width=4,
-                   height=2,
-                   font=('Times New Roman',30)
+                   width=6,  #ボタンの大きさ
+                   height=1,
+                   bg=["#"+''.join([random.choice('0123456789abcdef') for j in range(6)])],  #色ランダム
+                   fg=["#"+''.join([random.choice('0123456789abcdef') for j in range(6)])],   #ffff00
+                   font=('Chiller',30)
                    )
    
    btn.bind("<1>",button_click)
