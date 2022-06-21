@@ -1,10 +1,19 @@
 import tkinter as tk  #インポート
+import tkinter.messagebox as tkm
 
+from matplotlib import widgets
 
 if __name__=='__main__':
+    
     root = tk.Tk()  
 root.title('電卓')
 root.geometry("300x500")
+
+def button_click(event):
+    btn = event.widgets
+    num = btn['text']
+    tkm.showinfo("",f'{num}のボタンがクリックされました')
+
 
 r,c=0,0
 for num in range(9,-1,-1):
