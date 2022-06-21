@@ -36,7 +36,7 @@ entry = tk.Entry(root, justify='right', width=10, font=("Times New Roman",40))
 entry.grid(row=0,column=0,columnspan=3)
 
 r,c=1,0 #r行 c列
-for i,num in enumerate([i for i in range(9,-1,-1)]+["+","-","*","/",".","=","AC"]):
+for i,num in enumerate([j for j in range(9,-1,-1)]+["+","-","*","/",".","=","AC"]):
    btn = tk.Button(root, 
                    text=f'{num}',
                    width=6,  #ボタンの大きさ
