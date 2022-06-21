@@ -8,7 +8,8 @@ from matplotlib import widgets
 def button_click(event):
     btn = event.widget
     num = btn['text']
-    tkm.showinfo("",f'{num}のボタンがクリックされました')
+    #tkm.showinfo("",f'{num}のボタンがクリックされました')
+    entry.insert(tk.END,num)
 
 
 
