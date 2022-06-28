@@ -14,11 +14,8 @@ def key_up(event):
     global key
     key = "" #空
 
-
-
 def main_proc():
-    global mx, my, cx, cy,a
-    a=1
+    global mx, my, cx, cy
     delta = { #キー：押されたキー、値：移動幅リスト[x,y]
         "":[0,0],
         "Up":[0,-1],  
@@ -31,14 +28,6 @@ def main_proc():
         
     else:
         pass
-            
-            
-
-             
-    #if key == "Up"    : my -= 1
-    #if key == "Down"  : my += 1
-    #if key == "Left"  : mx -= 1
-    #if key == "Right" : mx += 1
     cx, cy = mx*100+50, my*100+50
     canvas.coords("tori", cx, cy)
     root.after(100,main_proc)
