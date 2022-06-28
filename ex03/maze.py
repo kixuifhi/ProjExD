@@ -56,9 +56,9 @@ if __name__ == "__main__":
     tori1 = tk.PhotoImage(file=f"fig/{r}.png") #画像
     mx, my = 1, 1
     cx, cy =  mx*100+50, my*100+50 
-    canvas.create_image(cx, cy, image=tori1, tag="tori")
     canvas.create_text(cx, cy, text="すたーと", anchor="center",fill="red") #startの追加
     canvas.create_text(13*100+50, 7*100+50, text="ごーる", anchor="center",fill="red") #goalの追加
+    canvas.create_image(cx, cy, image=tori1, tag="tori")
     key =  ""
     root.bind("<KeyPress>",key_down)
     root.bind("<KeyRelease>",key_up)
