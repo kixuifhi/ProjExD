@@ -102,13 +102,12 @@ def main():
             tk.widget.withdraw()
             return
         
-
         pg.display.update()
         clock.tick(1000)
     
 
 def check_bound(rct, scr_rct): #[1]rct: こうかとんor爆弾のRect,[2]scr_rct: スクリーンのRect
-    yoko, tate = +1, +1, 
+    yoko, tate, yoko2, tate2 = +1, +1, +1, +1
     if rct.left < scr_rct.left or scr_rct.right  < rct.right : #ダメ
         yoko = -1
         
