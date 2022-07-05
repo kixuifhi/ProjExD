@@ -117,7 +117,6 @@ def check_bound(rct, scr_rct): #[1]rct: こうかとんor爆弾のRect,[2]scr_rc
     return yoko, tate
     
 
-
 if __name__=="__main__":
     pg.init() #module 初期化
     main() 
