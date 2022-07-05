@@ -38,6 +38,7 @@ def main():
             if event.type == pg.QUIT:
                 return
         
+        
         #練習4
         key_states = pg.key.get_pressed()  #辞書
         if key_states[pg.K_UP] == True:    #y座標を-1
@@ -48,17 +49,43 @@ def main():
             kkimg_rct.centerx -= 1
         if key_states[pg.K_RIGHT] == True: #x座標を+1
             kkimg_rct.centerx += 1
+
+        if check_bound(kkimg_rct, screen_rct) != (1, 1): #領域外だったら
+            if key_states[pg.K_UP] == True:    #y座標を+1
+             kkimg_rct.centery += 1
+            if key_states[pg.K_DOWN] == True:  #y座標を-1
+             kkimg_rct.centery -= 1
+            if key_states[pg.K_LEFT] == True:  #x座標を+1
+             kkimg_rct.centerx += 1
+            if key_states[pg.K_RIGHT] == True: #x座標を-1
+             kkimg_rct.centerx -= 1
         screen_sfc.blit(kkimg_sfc, kkimg_rct)
         
         #練習6
         bmimg_rct.move_ip(vx, vy)
-        
         #練習5
         screen_sfc.blit(bmimg_sfc, bmimg_rct)
+        #練習7
+        yoko, tate =  check_bound(bmimg_rct, screen_rct)
+        vx *= yoko
+        vy *= tate
+
+        if kkimg_rct.colliderect(bmimg_rct): #練習8
+            return
+        
 
         pg.display.update()
         clock.tick(1000)
     
+
+def check_bound(rct, scr_rct): #[1]rct: こうかとんor爆弾のRect,[2]scr_rct: スクリーンのRect
+    yoko, tate = +1, +1
+    if rct.left < scr_rct.left or scr_rct.right  < rct.right : #ダメ
+        yoko = -1
+    if rct.top  < scr_rct.top  or scr_rct.bottom < rct.bottom: #ダメ
+        tate = -1
+    return yoko, tate 
+
 
 if __name__=="__main__":
     pg.init() #module 初期化
