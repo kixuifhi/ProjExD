@@ -13,5 +13,5 @@
 - gameover時にメッセージの表示
 - gameover時のメッセージで.get_time()で生き残り時間を表示
 ### Todo（実装しようと思ったけど時間がなかった）
--gameover時に画像変更
+- gameover時に画像変更
 ### memo
