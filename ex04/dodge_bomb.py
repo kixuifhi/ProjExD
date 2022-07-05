@@ -48,7 +48,7 @@ def main():
 
         # 練習2
         for event in pg.event.get():
-            if event.type == pg.QUIT:
+            if event.type == pg.QUIT: #quitでゲーム終了
                 return
         key_states = pg.key.get_pressed()
         if key_states[pg.K_ESCAPE] == True: #escapeを押したらゲーム終了
