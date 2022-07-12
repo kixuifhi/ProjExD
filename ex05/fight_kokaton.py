@@ -1,6 +1,9 @@
+
 import pygame as pg
 import sys
 import random
+import tkinter.messagebox as tkm
+import tkinter as tk
 
 
 class Screen:
@@ -47,6 +50,9 @@ class Bird:
                 self.rct.centerx -= 1
         self.blit(scr)
 
+    def attack(self):
+         return Shot(self)
+
 
 class Bomb:
     def __init__(self, color, size, vxy, scr: Screen):
@@ -69,29 +75,59 @@ class Bomb:
         self.vx *= yoko
         self.vy *= tate   
         # 練習5
-        self.blit(scr)          
+        self.blit(scr)
+
+
+class Shot:
+    def __init__(self, chr: Bird):
+        self.sfc = pg.image.load("fig/Colt.jpg")
+        self.sfc = pg.transform.rotozoom(self.sfc, 0, 0.1)
+        self.rct = self.sfc.get_rect()
+        self.rct.midleft = chr.rct.center
+
+    def blit(self, scr: Screen):
+        scr.sfc.blit(self.sfc, self.rct)
+
+    def update(self, scr: Screen):
+        self.rct.move_ip(+5, 0)
+        self.blit(scr)
+        if check_bound(self.rct, scr.rct) != (1, 1):
+            del self
+
+
+class GameOver:
+    def __init__(self):
+        clock = pg.time.Clock()
+        self.t = clock.get_time()
+        tkm.showerror("!!!gameover!!!",f"{self.t}秒生き残りました。このこうかとんは自動的に破壊されます") #警告文 
+        tk.widget.withdraw()
+        clock.tick(1000)
 
 
 def main():
-    clock = pg.time.Clock()
-    scr = Screen("逃げろ！こうかとん", (1600, 900), "fig/pg_bg.jpg")
+    beam = None
+    scr = Screen("闘え！こうかとん", (1600, 900), "fig/pg_bg.jpg")
     kkt = Bird("fig/6.png", 2.0, (900, 400))
     bkd = Bomb((255,0,0), 10, (+1,+1), scr)
-
+    
     while True:
         scr.blit()
 
-        # 練習2
         for event in pg.event.get():
-            if event.type == pg.QUIT: return
-
+            if event.type == pg.QUIT: 
+                return
+            if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+                beam = kkt.attack()
         kkt.update(scr)
         bkd.update(scr)
+        if beam:
+            beam.update(scr)
+        #sho.update(scr)
         if kkt.rct.colliderect(bkd.rct):
+            GameOver()
             return
 
         pg.display.update()
-        clock.tick(1000)
 
 
 # 練習7
