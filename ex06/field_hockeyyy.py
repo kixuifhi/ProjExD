@@ -1,4 +1,3 @@
-from errno import EEXIST, ENEEDAUTH
 from tkinter import CENTER
 import pygame as pg
 import sys
